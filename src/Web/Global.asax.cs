@@ -37,7 +37,8 @@ namespace Web
             {
                 sbc.UseRabbitMq();
                 sbc.UseRabbitMqRouting();
-                sbc.ReceiveFrom("rabbitmq://localhost/elevate");
+				// this should be different from other endpoints in the project
+                sbc.ReceiveFrom("rabbitmq://localhost/sample.web");
             });
         }
 

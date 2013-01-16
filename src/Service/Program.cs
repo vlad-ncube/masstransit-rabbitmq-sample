@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using MassTransit;
 using Topshelf;
-using Topshelf.Configuration.Dsl;
+
 
 namespace Service
 {
@@ -17,7 +17,8 @@ namespace Service
             {
                 sbc.UseRabbitMq();
                 sbc.UseRabbitMqRouting();
-                sbc.ReceiveFrom("rabbitmq://localhost/elevate");
+				// this should be different from other endpoints in the project
+                sbc.ReceiveFrom("rabbitmq://localhost/elevate.service");
             });
 
             var cfg = HostFactory.New(c => {
