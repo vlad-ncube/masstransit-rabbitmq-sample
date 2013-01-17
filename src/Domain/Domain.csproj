@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Messages\AuthorizeCustomer.cs" />
     <Compile Include="Messages\CreateCustomer.cs" />
+    <Compile Include="Messages\CustomerHasBeenCreated.cs" />
     <Compile Include="Messages\ParseCvMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

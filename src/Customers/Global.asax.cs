@@ -1,7 +1,8 @@
-﻿using System.Web.Http;
+﻿using System;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Customers.App_Start;
+using Domain.Messages;
 using MassTransit;
 
 namespace Customers
@@ -28,7 +29,13 @@ namespace Customers
 				sbc.UseRabbitMqRouting();
 				// this should be different from other endpoints in the project
 				sbc.ReceiveFrom("rabbitmq://localhost/sample.web");
+				sbc.Subscribe(subs => { subs.Handler<CustomerHasBeenCreated>(msg =>
+					{
+						throw new NotImplementedException();
+					}); });
 			});
 		}
+
+
 	}
 }
