@@ -31,17 +31,18 @@ namespace Service
         {
             Define(() =>
             {
-                Initially(
-                    When(Create)
-                    .Then((saga, message) =>
-                    {
-                        saga.Name = message.Name;
-                        saga.Email = message.Email;
-                        saga.Password = message.Password;
+				Initially(
+					When(Create)
+					.Then((saga, message) =>
+					{
+						saga.Name = message.Name;
+						saga.Email = message.Email;
+						saga.Password = message.Password;
 						Console.WriteLine("Create is accepted");
-                    })
-					.Publish((saga, message) => new CustomerHasBeenCreated { CustomerId = saga.CorrelationId })
-                    .TransitionTo(Created));
+					})
+					.Publish((saga, message) => 
+						WindsorController.Container.Resolve<CustomerHasBeenCreated>(new { CustomerId = saga.CorrelationId }))
+					.TransitionTo(Created));
                 During(Created,
                     When(Authorize)
 						.Call((saga, message) => saga.Handle(message))

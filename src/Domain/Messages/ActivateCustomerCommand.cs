@@ -2,7 +2,7 @@
 
 namespace Domain.Messages
 {
-    public class ParseCvMessage
+    public class ActivateCustomerCommand
     {
         public string S3Key { get; set; }
         public Guid ContractorId { get; set; }

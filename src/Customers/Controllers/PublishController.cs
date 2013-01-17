@@ -13,7 +13,7 @@ namespace Customers.Controllers
 
         public ActionResult Send(string message)
         {
-            Bus.Instance.Publish(new ParseCvMessage { S3Key = message });
+            Bus.Instance.Publish(new ActivateCustomerCommand { S3Key = message });
             return RedirectToAction("Index");
         }
     }

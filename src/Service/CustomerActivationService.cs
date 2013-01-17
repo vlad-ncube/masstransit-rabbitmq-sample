@@ -4,19 +4,10 @@ using MassTransit;
 
 namespace Service
 {
-    public class CvParserService
+    public class CustomerActivationService : Consumes<ActivateCustomerCommand>.Context
     {
-        readonly IServiceBus _bus;
-
-        public CvParserService()
-        {
-            _bus = Bus.Instance;
-        }
-
         public void Start()
         {
-            _bus.SubscribeHandler<ParseCvMessage>(msg => ParseCv(msg.S3Key));
-
             Console.WriteLine("Starting....");
         }
 
@@ -30,5 +21,10 @@ namespace Service
         {
             Console.WriteLine(name);
         }
+
+	    public void Consume(IConsumeContext<ActivateCustomerCommand> context)
+	    {
+		    ParseCv(context.Message.S3Key);
+	    }
     }
 }
