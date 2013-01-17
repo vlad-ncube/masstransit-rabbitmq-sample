@@ -31,8 +31,9 @@ namespace Customers
 				sbc.ReceiveFrom("rabbitmq://localhost/sample.web");
 				sbc.Subscribe(subs => { subs.Handler<CustomerHasBeenCreated>(msg =>
 					{
-						throw new NotImplementedException();
-					}); });
+						Bus.Instance.Publish(new AuthorizeCustomer {CustomerId = msg.CustomerId});
+					});
+				});
 			});
 		}
 

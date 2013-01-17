@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using Magnum.StateMachine;
 using MassTransit;
 using MassTransit.Saga;
@@ -41,11 +40,12 @@ namespace Service
                         saga.Password = message.Password;
 						Console.WriteLine("Create is accepted");
                     })
-					.Publish((saga, message) => new CustomerHasBeenCreated() { CustomerId = saga.CorrelationId })
+					.Publish((saga, message) => new CustomerHasBeenCreated { CustomerId = saga.CorrelationId })
                     .TransitionTo(Created));
                 During(Created,
                     When(Authorize)
-						.Call((saga, message) => saga.Handle(message)));
+						.Call((saga, message) => saga.Handle(message))
+						.TransitionTo(Completed));
             });
 
             Define(() =>
