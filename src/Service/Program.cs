@@ -19,7 +19,7 @@ namespace Service
                 sbc.ReceiveFrom("rabbitmq://localhost/elevate.service");
 				sbc.Subscribe(subs =>
 				{
-					subs.Saga<CustomerSaga>(new InMemorySagaRepository<CustomerSaga>())
+					subs.Saga(new InMemorySagaRepository<CustomerSaga>())
 						.Permanent();
 				});
             });

@@ -34,3 +34,13 @@ package.log
 timeStamp.dat
 .idea/workspace.xml
 .idea/tasks.xml
+/UpgradeLog.XML
+/UpgradeLog.htm
+/_UpgradeReport_Files/UpgradeReport.css
+/_UpgradeReport_Files/UpgradeReport.xslt
+/_UpgradeReport_Files/UpgradeReport_Error.png
+/_UpgradeReport_Files/UpgradeReport_Information.png
+/_UpgradeReport_Files/UpgradeReport_Success.png
+/_UpgradeReport_Files/UpgradeReport_Warning.png
+/src/Web/App_Data/ASPNETDB.MDF
+/src/Web/App_Data/aspnetdb_log.ldf

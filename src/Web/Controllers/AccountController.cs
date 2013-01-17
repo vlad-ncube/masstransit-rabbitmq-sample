@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using Domain.Messages;
+using MassTransit;
 using Web.Models;
 
 namespace Web.Controllers
@@ -80,6 +82,8 @@ namespace Web.Controllers
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+
+				Bus.Instance.Publish(new CreateCustomer { Name = model.UserName, Email = model.Email, Password = model.Password });
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Domain.Messages;
 using MassTransit;
 
@@ -19,8 +15,7 @@ namespace Web.Controllers
 
         public ActionResult Create(string name)
         {
-            //Bus.Instance.Publish(new ParseCvMessage { S3Key = name });
-			Bus.Instance.Publish(new CreateCustomer { Name = name, Email = "Email + " + name, Password = "Password + " + name});
+            Bus.Instance.Publish(new ParseCvMessage { S3Key = name });
             return RedirectToAction("Index");
         }
 

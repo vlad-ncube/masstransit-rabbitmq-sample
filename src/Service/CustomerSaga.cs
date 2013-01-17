@@ -24,7 +24,7 @@ namespace Service
 
 		public CustomerSaga(Guid guid)
 		{
-			CorrelationId = guid;
+			CorrelationId = Guid.NewGuid();
 		}
 
         static CustomerSaga()
