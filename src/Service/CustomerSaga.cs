@@ -13,7 +13,7 @@ namespace Service
 
         public static State Initial { get; set; }
         public static State Created { get; set; }
-        public static State Closed { get; set; }
+        public static State Completed { get; set; }
 
         public static Event<CreateCustomer> Create { get; set; }
         public static Event<AuthorizeCustomer> Authorize { get; set; }
@@ -21,6 +21,11 @@ namespace Service
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+
+		public CustomerSaga(Guid guid)
+		{
+			CorrelationId = guid;
+		}
 
         static CustomerSaga()
         {
@@ -33,10 +38,12 @@ namespace Service
                         saga.Name = message.Name;
                         saga.Email = message.Email;
                         saga.Password = message.Password;
+						Console.WriteLine("Create is accepted");
                     })
                     .TransitionTo(Created));
                 During(Created,
-                    When(Authorize));
+                    When(Authorize)
+						.Call((saga, message) => Console.WriteLine("Authorize is accepted")));
             });
 
             Define(() =>

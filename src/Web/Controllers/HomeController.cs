@@ -19,7 +19,8 @@ namespace Web.Controllers
 
         public ActionResult Create(string name)
         {
-            Bus.Instance.Publish(new ParseCvMessage { S3Key = name });
+            //Bus.Instance.Publish(new ParseCvMessage { S3Key = name });
+			Bus.Instance.Publish(new CreateCustomer { Name = name, Email = "Email + " + name, Password = "Password + " + name});
             return RedirectToAction("Index");
         }
 

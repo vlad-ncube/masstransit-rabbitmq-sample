@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MassTransit;
+using MassTransit.Saga;
 using Topshelf;
 
 
@@ -19,6 +20,11 @@ namespace Service
                 sbc.UseRabbitMqRouting();
 				// this should be different from other endpoints in the project
                 sbc.ReceiveFrom("rabbitmq://localhost/elevate.service");
+				sbc.Subscribe(subs =>
+				{
+					subs.Saga<CustomerSaga>(new InMemorySagaRepository<CustomerSaga>())
+						.Permanent();
+				});
             });
 
             var cfg = HostFactory.New(c => {
