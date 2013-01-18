@@ -31,6 +31,7 @@ namespace Service
 				{
 					//tell mastransit to look in the container for classes its interested
 					subs.LoadFrom(Container);
+					// TODO: vlad - ask Mick if we can load several sagas with one command
 					subs.Saga<CustomerSaga>(Container);
 				});
             });

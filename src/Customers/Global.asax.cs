@@ -1,14 +1,12 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
+using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using Customers.App_Start;
-using Domain.Messages;
 using MassTransit;
 
 namespace Customers
 {
-	// Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-	// visit http://go.microsoft.com/?LinkId=9394801
 	public class MvcApplication : System.Web.HttpApplication
 	{
 		protected void Application_Start()
@@ -23,20 +21,20 @@ namespace Customers
 
 		void ConfigureBus()
 		{
+			WindsorContainer container = new WindsorContainer();
+			//put all our services in this container
+			container.Register(AllTypes.FromThisAssembly().BasedOn<IConsumer>());
+
 			Bus.Initialize(sbc =>
 			{
 				sbc.UseRabbitMq();
-				sbc.UseRabbitMqRouting();
 				// this should be different from other endpoints in the project
 				sbc.ReceiveFrom("rabbitmq://localhost/sample.web");
-				sbc.Subscribe(subs => { subs.Handler<CustomerHasBeenCreated>(msg =>
-					{
-						Bus.Instance.Publish(new AuthorizeCustomer {CustomerId = msg.CustomerId});
-					});
+				sbc.Subscribe(subs =>
+				{
+					subs.LoadFrom(container);
 				});
 			});
 		}
-
-
 	}
 }
