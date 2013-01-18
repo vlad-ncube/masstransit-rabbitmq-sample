@@ -1,0 +1,40 @@
+﻿@model Customers.Models.User
+
+@{
+    Layout = null;
+}
+
+<h2>User</h2>
+@(Model == null ? "" : "User " + Model.FirstName + " has beed added")
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName)
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName)
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.EmailAddress)
+            @Html.TextBoxFor(m => m.EmailAddress)
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.Age)
+            @Html.TextBoxFor(m => m.Age)
+        </div>
+    
+        <div>
+            @Html.LabelFor(m => m.Location)
+            @Html.TextBoxFor(m => m.Location)
+        </div>
+    
+        <button type="submit">Add</button>
+    }
+</div>

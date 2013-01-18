@@ -2,7 +2,7 @@
 using Domain.Messages;
 using MassTransit;
 
-namespace Service
+namespace Service.Subscribers
 {
     public class CustomerActivationService : Consumes<ActivateCustomerCommand>.Context
     {

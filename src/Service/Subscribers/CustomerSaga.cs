@@ -4,7 +4,7 @@ using MassTransit;
 using MassTransit.Saga;
 using Domain.Messages;
 
-namespace Service
+namespace Service.Subscribers
 {
     public class CustomerSaga : SagaStateMachine<CustomerSaga>, ISaga
     {

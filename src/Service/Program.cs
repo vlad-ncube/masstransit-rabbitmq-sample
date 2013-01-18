@@ -3,6 +3,7 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using MassTransit;
 using MassTransit.Saga;
+using Service.Subscribers;
 using Topshelf;
 
 
