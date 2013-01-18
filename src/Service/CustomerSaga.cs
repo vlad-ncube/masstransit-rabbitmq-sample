@@ -41,7 +41,7 @@ namespace Service
 						Console.WriteLine("Create is accepted");
 					})
 					.Publish((saga, message) => 
-						WindsorController.Container.Resolve<CustomerHasBeenCreated>(new { CustomerId = saga.CorrelationId }))
+						new CustomerHasBeenCreated() {CustomerId = saga.CorrelationId})
 					.TransitionTo(Created));
                 During(Created,
                     When(Authorize)
