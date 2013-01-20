@@ -62,12 +62,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\MassTransit.CastleWindsor.2.7.0\lib\net40\MassTransit.WindsorIntegration.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\packages\mongocsharpdriver.1.7\lib\net35\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\packages\mongocsharpdriver.1.7\lib\net35\MongoDB.Driver.dll</HintPath>
-    </Reference>
     <Reference Include="RabbitMQ.Client, Version=3.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\RabbitMQ.Client.3.0.0\lib\net30\RabbitMQ.Client.dll</HintPath>
@@ -87,7 +81,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MongoRepository.cs" />
     <Compile Include="Subscribers\CustomerSaga.cs" />
     <Compile Include="Subscribers\CustomerActivationService.cs" />
     <Compile Include="Program.cs" />
@@ -103,6 +96,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{C188A45B-368E-43DB-A971-7DB00E73A539}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositories\Repositories.csproj">
+      <Project>{8eff6abe-8a21-4f1f-ba94-5956030cb633}</Project>
+      <Name>Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -44,3 +44,5 @@ timeStamp.dat
 /_UpgradeReport_Files/UpgradeReport_Warning.png
 /src/Web/App_Data/ASPNETDB.MDF
 /src/Web/App_Data/aspnetdb_log.ldf
+/TestResults/MasstransitSpike.TE.Tests.mdf
+/TestResults/MasstransitSpike.TE.Tests_log.ldf
