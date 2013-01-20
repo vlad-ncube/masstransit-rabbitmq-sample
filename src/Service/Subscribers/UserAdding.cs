@@ -1,4 +1,5 @@
 ﻿using System;
+using Castle.Windsor;
 using Domain.DomainObjects;
 using Domain.Messages;
 using MassTransit;
@@ -10,7 +11,9 @@ namespace Service.Subscribers
 	{
 		public void Consume(IConsumeContext<AddUser> context)
 		{
-            MongoRepository.AddUser(new User
+            IRepository repository = Program.Container.Resolve<IRepository>();
+
+            repository.AddUser(new User
             {
                 UserId = Guid.NewGuid(),
                 FirstName = context.Message.FirstName,

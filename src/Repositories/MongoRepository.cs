@@ -5,8 +5,7 @@ using MongoDB.Driver;
 
 namespace Repositories
 {
-    // TODO: vlad - make it to be used by DI
-    public class MongoRepository
+    public class MongoRepository : IRepository
     {
         static MongoDatabase database;
 
@@ -25,17 +24,17 @@ namespace Repositories
             database = new MongoClient(connectionString).GetServer().GetDatabase(databaseName);
         }
 
-        public static void AddUser (User user)
+        public void AddUser (User user)
         {
             database.GetCollection<User>("Users").Insert(user);
         }
 
-        public static User GetUserByName(string firstName)
+        public User GetUserByName(string firstName)
         {
             return database.GetCollection<User>("Users").FindOne(new QueryDocument("FirstName", firstName));
         }
 
-        public static void DeleteUsers()
+        public void DeleteUsers()
         {
             database.GetCollection<User>("Users").Drop();
         }

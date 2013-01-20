@@ -3,9 +3,9 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using MassTransit;
 using MassTransit.Saga;
+using Repositories;
 using Service.Subscribers;
 using Topshelf;
-
 
 namespace Service
 {
@@ -20,6 +20,7 @@ namespace Service
 			//put all our services in this container
 	        Container.Register(AllTypes.FromThisAssembly().BasedOn<IConsumer>());
 			Container.Register(Component.For(typeof(ISagaRepository<>)).ImplementedBy(typeof(InMemorySagaRepository<>)));
+            Container.Register(Component.For<IRepository>().ImplementedBy<MongoRepository>()); // TODO: vlad - can we get it from a config?
 
             Bus.Initialize(sbc =>
             {

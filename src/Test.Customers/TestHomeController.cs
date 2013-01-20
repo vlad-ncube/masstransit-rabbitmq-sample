@@ -6,14 +6,23 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.PhantomJS;
 using Repositories;
 using Domain.DomainObjects;
+using Castle.Windsor;
+using Castle.MicroKernel.Registration;
 
 namespace Test.Customers
 {
     [TestClass]
     public class TestHomeController
     {
-        private IWebDriver driver;
-        private static Process serviceProcess;
+        IWebDriver driver;
+        static Process serviceProcess;
+        static WindsorContainer container;
+
+        static TestHomeController()
+        {
+            container = new WindsorContainer();
+            container.Register(Component.For<IRepository>().ImplementedBy<MongoRepository>()); // TODO: vlad - can we get it from a config?
+        }
 
         [AssemblyInitialize]
         public static void AssemblyInitialize(TestContext context)
@@ -25,7 +34,10 @@ namespace Test.Customers
         [TestInitialize]
         public void TestInitialize()
         {
-            MongoRepository.DeleteUsers(); // clear db before each test (only users for now)
+            // TODO: vlad - get it by DI
+            IRepository repository = container.Resolve<IRepository>();
+            repository.DeleteUsers(); // clears db before each test (only users for now)
+
             driver = new PhantomJSDriver();
         }
 
@@ -51,7 +63,8 @@ namespace Test.Customers
 
             // check db
             System.Threading.Thread.Sleep(5000); // TODO: vlad - make it in a right way
-            User dbUser = MongoRepository.GetUserByName(userFirstName);
+            IRepository repository = container.Resolve<IRepository>();
+            User dbUser = repository.GetUserByName(userFirstName);
             Assert.AreEqual(99, dbUser.Age);
         }
 
