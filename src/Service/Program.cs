@@ -18,9 +18,11 @@ namespace Service
 			Container = new WindsorContainer();
 
 			//put all our services in this container
-	        Container.Register(AllTypes.FromThisAssembly().BasedOn<IConsumer>());
-			Container.Register(Component.For(typeof(ISagaRepository<>)).ImplementedBy(typeof(InMemorySagaRepository<>)));
-            Container.Register(Component.For<IRepository>().ImplementedBy<MongoRepository>()); // TODO: vlad - can we get it from a config?
+			Container.Register(
+				AllTypes.FromThisAssembly().BasedOn<IConsumer>(),
+				Component.For(typeof(ISagaRepository<>)).ImplementedBy(typeof(InMemorySagaRepository<>)),
+				AllTypes.FromThisAssembly().BasedOn<ISaga>(),
+				Component.For<IRepository>().ImplementedBy<MongoRepository>()); // TODO: vlad - can we get it from a config?
 
             Bus.Initialize(sbc =>
             {
@@ -31,10 +33,8 @@ namespace Service
 
 				sbc.Subscribe(subs =>
 				{
-					//tell mastransit to look in the container for classes its interested
+					//tell mastransit to look in the container for classes it's interested in
 					subs.LoadFrom(Container);
-					// TODO: vlad - ask Mick if we can load several sagas with one command
-					subs.Saga<CustomerSaga>(Container);
 				});
             });
 
