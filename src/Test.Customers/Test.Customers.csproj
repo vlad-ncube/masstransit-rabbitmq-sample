@@ -44,6 +44,9 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\..\packages\Selenium.WebDriver.2.29.1\lib\net40\WebDriver.dll</HintPath>
     </Reference>
@@ -61,6 +64,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Features\AddUser.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddUser.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BasePageModel.cs" />
+    <Compile Include="Pages\UserPageModel.cs" />
+    <Compile Include="Steps\AddUserSteps.cs" />
     <Compile Include="TestHomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +82,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Features\AddUser.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AddUser.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +98,7 @@
       <Name>Repositories</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

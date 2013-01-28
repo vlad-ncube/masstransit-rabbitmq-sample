@@ -17,7 +17,7 @@ namespace Test.Customers.Pages
             set { Driver.FindElement(By.Id("LastName")).SendKeys(value); }
         }
 
-        public string EmailAdress
+        public string EmailAddress
         {
             set { Driver.FindElement(By.Id("EmailAddress")).SendKeys(value); }
         }

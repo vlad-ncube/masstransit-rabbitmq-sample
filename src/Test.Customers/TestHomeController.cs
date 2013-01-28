@@ -12,65 +12,65 @@ using Test.Customers.Pages;
 
 namespace Test.Customers
 {
-    [TestClass]
-    public class TestHomeController
-    {
-        static Process serviceProcess;
-        static WindsorContainer container;
+    //[TestClass]
+    //public class TestHomeController
+    //{
+    //    static Process serviceProcess;
+    //    static WindsorContainer container;
 
-        static TestHomeController()
-        {
-            container = new WindsorContainer();
-            container.Register(Component.For<IRepository>().ImplementedBy<MongoRepository>()); // TODO: vlad - can we get it from a config?
-        }
+    //    static TestHomeController()
+    //    {
+    //        container = new WindsorContainer();
+    //        container.Register(Component.For<IRepository>().ImplementedBy<MongoRepository>()); // TODO: vlad - can we get it from a config?
+    //    }
 
-        [AssemblyInitialize]
-        public static void AssemblyInitialize(TestContext context)
-        {
-            serviceProcess = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.ToLower() == "service")
-                ?? Process.Start(@"..\..\..\..\output\service\Service.exe");
-        }
+    //    [AssemblyInitialize]
+    //    public static void AssemblyInitialize(TestContext context)
+    //    {
+    //        serviceProcess = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.ToLower() == "service")
+    //            ?? Process.Start(@"..\..\..\..\output\service\Service.exe");
+    //    }
         
-        [TestInitialize]
-        public void TestInitialize()
-        {
-            // TODO: vlad - get it by DI
-            IRepository repository = container.Resolve<IRepository>();
-            repository.DeleteUsers(); // clears db before each test (only users for now)
-        }
+    //    [TestInitialize]
+    //    public void TestInitialize()
+    //    {
+    //        // TODO: vlad - get it by DI
+    //        IRepository repository = container.Resolve<IRepository>();
+    //        repository.DeleteUsers(); // clears db before each test (only users for now)
+    //    }
 
-        [TestMethod]
-        public void Index_ValidData_Success()
-        {
-            // TODO: Vlad - use DI here
-            UserPageModel userPage = new UserPageModel(new PhantomJSDriver());
+    //    [TestMethod]
+    //    public void Index_ValidData_Success()
+    //    {
+    //        // TODO: Vlad - use DI here
+    //        UserPageModel userPage = new UserPageModel(new PhantomJSDriver());
 
-            // fill all the fields
-            string userFirstName = "Test First Name";
-            userPage.FirstName = userFirstName;
-            userPage.LastName = "Test Last Name";
-            userPage.EmailAdress = "Test Email Address";
-            userPage.Age = "99";
-            userPage.Location = "Test Location";
+    //        // fill all the fields
+    //        string userFirstName = "Test First Name";
+    //        userPage.FirstName = userFirstName;
+    //        userPage.LastName = "Test Last Name";
+    //        userPage.EmailAddress = "Test Email Address";
+    //        userPage.Age = "99";
+    //        userPage.Location = "Test Location";
 
-            // submit
-            userPage.Submit();
+    //        // submit
+    //        userPage.Submit();
 
-            // check result webpage
-            string resultMessage = userPage.ResultMessage;
-            Assert.AreEqual(string.Format("User {0} has beed added", userFirstName), resultMessage);
+    //        // check result webpage
+    //        string resultMessage = userPage.ResultMessage;
+    //        Assert.AreEqual(string.Format("User {0} has beed added", userFirstName), resultMessage);
 
-            // check db
-            System.Threading.Thread.Sleep(5000); // TODO: vlad - make it in a right way
-            IRepository repository = container.Resolve<IRepository>();
-            User dbUser = repository.GetUserByName(userFirstName);
-            Assert.AreEqual(99, dbUser.Age);
-        }
+    //        // check db
+    //        System.Threading.Thread.Sleep(5000); // TODO: vlad - make it in a right way
+    //        IRepository repository = container.Resolve<IRepository>();
+    //        User dbUser = repository.GetUserByName(userFirstName);
+    //        Assert.AreEqual(99, dbUser.Age);
+    //    }
 
-        [AssemblyCleanup]
-        public static void AssemblyCleanup()
-        {
-            serviceProcess.Kill();
-        }
-    }
+    //    [AssemblyCleanup]
+    //    public static void AssemblyCleanup()
+    //    {
+    //        serviceProcess.Kill();
+    //    }
+    //}
 }
