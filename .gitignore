@@ -46,3 +46,6 @@ timeStamp.dat
 /src/Web/App_Data/aspnetdb_log.ldf
 /TestResults/MasstransitSpike.TE.Tests.mdf
 /TestResults/MasstransitSpike.TE.Tests_log.ldf
+/TestResults
+
+/MasstransitSpike.sln.DotSettings.user
