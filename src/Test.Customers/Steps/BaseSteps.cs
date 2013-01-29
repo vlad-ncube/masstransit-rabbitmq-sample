@@ -1,6 +1,9 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using System.Diagnostics;
+using System.Linq;
+using Castle.MicroKernel.Registration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.PhantomJS;
+using Repositories;
 using TechTalk.SpecFlow;
 using Castle.Windsor;
 using Test.Customers.Pages;
@@ -10,25 +13,46 @@ namespace Test.Customers.Steps
     [Binding]
     public class BaseSteps
     {
-        public static WindsorContainer Container;
+        static WindsorContainer container;
+        static Process serviceProcess;
+
+        public static WindsorContainer Container
+        {
+            get { return container; }
+        }
 
         [BeforeTestRun]
         public static void TestsSetup()
         {
-            Container = new WindsorContainer();
+            ConfigureContainer();
+            RunServices();
+        }
+
+        static void ConfigureContainer()
+        {
+            container = new WindsorContainer();
 
             // TODO: vlad - register all classes which implement IPageModel
-            Container.Register(Component.For<IUserPageModel>().ImplementedBy<UserPageModel>());
-            
+            container.Register(Component.For<IUserPageModel>().ImplementedBy<UserPageModel>());
+
             // TODO: vlad - refactor the way phantom being run
             IWebDriver driver = new PhantomJSDriver();
-            Container.Register(Component.For<IWebDriver>().Instance(driver)); 
+            container.Register(Component.For<IWebDriver>().Instance(driver));
+
+            container.Register(Component.For<IRepository>().ImplementedBy<MongoRepository>()); // TODO: vlad - can we get it from a config?
+        }
+
+        static void RunServices()
+        {
+            serviceProcess = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.ToLower() == "service")
+                ?? Process.Start(@"..\..\..\..\output\service\Service.exe");
         }
 
         [AfterTestRun]
         public static void TestsCleanup()
         {
-            Container.Resolve<IWebDriver>().Quit();
+            container.Resolve<IWebDriver>().Quit();
+            serviceProcess.Kill();
         }
     }
 }

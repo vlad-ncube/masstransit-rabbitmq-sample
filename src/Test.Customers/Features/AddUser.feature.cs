@@ -98,7 +98,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 9
  testRunner.Then("the result says the user \"Test First Name\" has been added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 10
- testRunner.And("new record about the user has been added to db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("new record about the user has been added to db with UserFirstName = \"Test First N" +
+                    "ame\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

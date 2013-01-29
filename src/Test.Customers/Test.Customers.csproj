@@ -75,7 +75,6 @@
     <Compile Include="Pages\UserPageModel.cs" />
     <Compile Include="Steps\AddUserSteps.cs" />
     <Compile Include="Steps\BaseSteps.cs" />
-    <Compile Include="TestHomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
