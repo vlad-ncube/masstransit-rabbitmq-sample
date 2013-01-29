@@ -1,22 +1,18 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.PhantomJS;
 using TechTalk.SpecFlow;
 using Test.Customers.Pages;
 
 namespace Test.Customers.Steps
 {
     [Binding]
-    public class AddUserSteps
+    public class AddUserSteps : BaseSteps
     {
-        // TODO: vlad - refactor this
-        UserPageModel userPage;
+        IUserPageModel userPage;
 
         [Given(@"I opened Add New User Page")]
         public void GivenIOpenedAddNewUserPage()
         {
-            // TODO: vlad - refactor this: both page creation and path to phantom dir
-            // TODO: vlad - also need to close the driver
-            userPage = new UserPageModel(new PhantomJSDriver(@"..\..\..\src\Test.Customers"));
+            userPage = Container.Resolve<IUserPageModel>();
         }
 
         [When(@"I entered new user data")]
@@ -45,9 +41,7 @@ namespace Test.Customers.Steps
         [Then(@"new record about the user has been added to db")]
         public void ThenNewRecordAboutTheUserHasBeenAddedToDb()
         {
-            //ScenarioContext.Current.Pending();
-            // TODO: vlad - not here, just to test
-            userPage.Driver.Quit();
+            // add db logic here
         }
     }
 }
