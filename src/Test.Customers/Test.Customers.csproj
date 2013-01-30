@@ -69,13 +69,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AddUser.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\SignUpSteps.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignUpSteps.feature</DependentUpon>
+    </Compile>
     <Compile Include="Pages\BasePageModel.cs" />
     <Compile Include="Pages\IPageModel.cs" />
+    <Compile Include="Pages\ISignUpStep1PageModel.cs" />
     <Compile Include="Pages\IUserPageModel.cs" />
+    <Compile Include="Pages\SignUpStep1PageModel.cs" />
     <Compile Include="Pages\UserPageModel.cs" />
     <Compile Include="Steps\AddUserSteps.cs" />
     <Compile Include="Steps\BaseSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\SignUpStepsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="phantomjs.exe">
@@ -87,6 +95,10 @@
     <None Include="Features\AddUser.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddUser.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\SignUpSteps.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SignUpSteps.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
