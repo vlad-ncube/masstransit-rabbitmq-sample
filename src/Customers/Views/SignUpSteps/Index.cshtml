@@ -12,29 +12,70 @@
     <body>
         <div>
             Here are the steps:
-            <div data-bind="template: { name: 'step1-template', data: name }"></div>
+            <div data-bind="template: { data: step, name: stepTemplate.bind($data) }"></div>
         </div>
     </body>
 </html>
 
-<script type="text/html" id="step1-template">    
-    <h3 data-bind="text: name"></h3>    
+<script type="text/html" id="step-template1">
+    <h3>This is step 1</h3>    
     <form>
         <div>
             <label for="input1">Input 1</label>
-            <div class="controls">
+            <div>
                 <input id="input1"/>
             </div>
         </div>
         <div>
-            <button data-bind="click: saveAndContinue">Next</button>
+            <button data-bind="click: next">Next</button>
+        </div>
+    </form>
+</script>
+
+<script type="text/html" id="step-template2">
+    <h3>This is step 2</h3>
+    <form>
+        <div>
+            <label for="input2">Input 2</label>
+            <div>
+                <input id="input2"/>
+            </div>
+        </div>
+        <div>
+            <button data-bind="click: next">Next</button>
+        </div>
+    </form>
+</script>
+
+<script type="text/html" id="step-template3">
+    <h3>This is step 3</h3>
+    <form>
+        <div>
+            <label for="input3">Input 3</label>
+            <div>
+                <input id="input3"/>
+            </div>
+        </div>
+        <div>
+            <button data-bind="click: next">Next</button>
         </div>
     </form>
 </script>
 
 <script type="text/javascript">
     function MyViewModel() {
-        this.name = 'Name 1';
+        stepId++;
+        this.step = 'step-template'+stepId;
     }
+    
+    function next() {
+        ko.applyBindings(new MyViewModel());
+    }
+
+    function stepTemplate () {
+        return this.step;
+    }
+
+    this.stepId = 0;
     ko.applyBindings(new MyViewModel());
 </script>
