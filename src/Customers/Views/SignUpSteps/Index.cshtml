@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Index</title>
+        <script src="~/Scripts/knockout-2.2.1.debug.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div>
+            Here are the steps:
+            <div data-bind="template: { name: 'step1-template', data: name }"></div>
+        </div>
+    </body>
+</html>
+
+<script type="text/html" id="step1-template">    
+    <h3 data-bind="text: name"></h3>    
+    <form>
+        <div>
+            <label for="input1">Input 1</label>
+            <div class="controls">
+                <input id="input1"/>
+            </div>
+        </div>
+        <div>
+            <button data-bind="click: saveAndContinue">Next</button>
+        </div>
+    </form>
+</script>
+
+<script type="text/javascript">
+    function MyViewModel() {
+        this.name = 'Name 1';
+    }
+    ko.applyBindings(new MyViewModel());
+</script>
