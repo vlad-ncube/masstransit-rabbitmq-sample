@@ -2,7 +2,7 @@
 
 namespace Test.Customers.Pages
 {
-    class SignUpStep1PageModel : BasePageModel, ISignUpStep1PageModel
+    public class SignUpStep1PageModel : BasePageModel, ISignUpStep1PageModel
     {
         // TODO: Vlad - think about where to take it from
         const string url = "http://localhost:1825/SignUpSteps";

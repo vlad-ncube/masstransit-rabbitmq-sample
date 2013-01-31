@@ -32,9 +32,7 @@ namespace Test.Customers.Steps
         {
             container = new WindsorContainer();
 
-            // TODO: vlad - register all classes which implement IPageModel
-            container.Register(Component.For<IUserPageModel>().ImplementedBy<UserPageModel>());
-            container.Register(Component.For<ISignUpStep1PageModel>().ImplementedBy<SignUpStep1PageModel>());
+            container.Register(AllTypes.FromThisAssembly().BasedOn<IPageModel>().WithService.FirstInterface());
 
             // TODO: vlad - refactor the way phantom being run
             IWebDriver driver = new PhantomJSDriver();
