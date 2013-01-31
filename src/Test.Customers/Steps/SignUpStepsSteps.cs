@@ -10,16 +10,16 @@ namespace Test.Customers.Steps
         // use one model for different steps - just for tests
         ISignUpStep1PageModel signupPage;
 
-        [Given(@"I have page opened")]
+        [Given(@"I have signup page opened")]
         public void GivenIHavePageOpened()
         {
             signupPage = Container.Resolve<ISignUpStep1PageModel>();
         }
         
-        [When(@"I press Next button two times")]
+        [When(@"I press Next button")]
+        [When(@"I press Next button second time")]
         public void WhenIPressNextButtonTwoTimes()
         {
-            signupPage.Next();
             signupPage.Next();
         }
         
@@ -28,6 +28,19 @@ namespace Test.Customers.Steps
         {
             string resultStepHeader = signupPage.StepHeader;
             Assert.AreEqual(expectedStepHeader, resultStepHeader);
+        }
+
+        [When(@"I press browser back button")]
+        [When(@"I press browser Back button again")]
+        public void WhenIPressBrowserBackButton()
+        {
+            signupPage.BrowserBack();
+        }
+
+        [When(@"I press browser Forward button")]
+        public void WhenIPressBrowserForwardButton()
+        {
+            signupPage.BrowserForward();
         }
     }
 }

@@ -18,5 +18,15 @@ namespace Test.Customers.Pages
         {
             Driver.FindElement(By.Id("sbmNext")).Click();
         }
+
+        public void BrowserBack()
+        {
+            Driver.Navigate().Back();
+        }
+
+        public void BrowserForward()
+        {
+            Driver.Navigate().Forward();
+        }
     }
 }
