@@ -7,7 +7,9 @@
 <html>
     <head>
         <title>Index</title>
+        <script src="~/Scripts/jquery-1.9.0.js" type="text/javascript"></script>
         <script src="~/Scripts/knockout-2.2.1.debug.js" type="text/javascript"></script>
+        <script src="~/Scripts/jquery.history.js" type="text/javascript"></script>
     </head>
     <body>
         <div>
@@ -33,7 +35,7 @@
 </script>
 
 <script type="text/html" id="step-template2">
-    <h id="stepHeader"3>This is step 2</h>
+    <h3 id="stepHeader">This is step 2</h3>
     <form>
         <div>
             <label for="input2">Input 2</label>
@@ -63,19 +65,35 @@
 </script>
 
 <script type="text/javascript">
+    var history = window.History;
+    history.init();
+    this.stepId = 1;
+    
+    history.Adapter.bind(window, 'statechange', function () {
+        var state = history.getState();
+        var match = state.url.match(/step=(\d)/);
+        if (match) {
+            stepId = parseInt(match[1], 10);
+        } else {
+            stepId = 1;
+        }
+        
+        ko.applyBindings(new MyViewModel());
+    });
+    
     function MyViewModel() {
-        stepId++;
         this.step = 'step-template'+stepId;
     }
-    
+
     function next() {
-        ko.applyBindings(new MyViewModel());
+        if (stepId == 3) return; // just a stub for tests
+        stepId++;
+        history.pushState(null, null, "?step=" + stepId);
     }
 
     function stepTemplate () {
         return this.step;
     }
 
-    this.stepId = 0;
     ko.applyBindings(new MyViewModel());
 </script>
