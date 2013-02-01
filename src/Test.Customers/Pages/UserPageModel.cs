@@ -2,7 +2,7 @@
 
 namespace Test.Customers.Pages
 {
-    class UserPageModel : BasePageModel, IUserPageModel
+    public class UserPageModel : BasePageModel, IUserPageModel
     {
         // TODO: Vlad - think about where to take it from
         const string url = "http://localhost:1825/";

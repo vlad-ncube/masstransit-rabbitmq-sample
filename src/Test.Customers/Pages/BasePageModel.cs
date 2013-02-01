@@ -2,7 +2,7 @@
 
 namespace Test.Customers.Pages
 {
-    class BasePageModel
+    public class BasePageModel
     {
         readonly IWebDriver driver;
         public IWebDriver Driver
