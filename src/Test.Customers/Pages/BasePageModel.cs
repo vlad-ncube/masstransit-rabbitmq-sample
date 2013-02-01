@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 
 namespace Test.Customers.Pages
 {
@@ -13,7 +14,11 @@ namespace Test.Customers.Pages
         public BasePageModel(IWebDriver driver, string url)
         {
             this.driver = driver;
-            driver.Navigate().GoToUrl(url);
+
+            if (this.driver.Url != url)
+            {
+                driver.Navigate().GoToUrl(url);
+            }
         }
     }
 }
