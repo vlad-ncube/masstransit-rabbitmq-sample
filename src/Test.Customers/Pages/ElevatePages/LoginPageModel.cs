@@ -13,8 +13,7 @@ namespace Test.Customers.Pages.ElevatePages
     public class LoginPageModel : BasePageModel, ILoginPageModel
     {
         // TODO: Vlad - think about where to take it from
-        //const string url = "http://localhost/Contractors/login";
-        const string url = "https://app.elevatedirect.com/Contractors/login";
+        const string url = "http://localhost/Contractors/login";
 
         public string Email
         {

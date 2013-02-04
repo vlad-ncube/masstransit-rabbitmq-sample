@@ -84,17 +84,13 @@ this.ScenarioSetup(scenarioInfo);
 #line 10
  testRunner.Then("my dashboard is opened and its title is \'Elevate\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 12
- testRunner.When("I manually enter signup steps url = \'http://localhost/Contractors/signup/steps?st" +
-                    "ep=0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I manually go to signup step 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 13
- testRunner.Then("profile\'s Choose password page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 14
- testRunner.And("it says \'Password saved. You can change this later, once you\'ve completed signing" +
-                    " up.\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
+ testRunner.Then("profile step0 page is opened with header \'Hello mick delaney\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 15
  testRunner.When("I press Continue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 17
- testRunner.Then("profile\'s Technical skills page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 16
+ testRunner.Then("profile step1 page is opened with header \'Technical skills\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Skill",
@@ -106,12 +102,12 @@ this.ScenarioSetup(scenarioInfo);
                         "0.5",
                         "August",
                         "2012"});
-#line 19
+#line 18
  testRunner.When("I enter skills:", ((string)(null)), table1, "When ");
-#line 22
+#line 21
  testRunner.And("Press Save and Continue button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
- testRunner.Then("profile\'s Work experience page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 22
+ testRunner.Then("profile step2 page is opened with header \'Work experience\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

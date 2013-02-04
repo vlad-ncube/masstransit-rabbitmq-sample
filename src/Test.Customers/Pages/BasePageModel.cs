@@ -15,7 +15,7 @@ namespace Test.Customers.Pages
         {
             this.driver = driver;
 
-            if (this.driver.Url != url)
+            if (this.driver.Url.ToLower() != url.ToLower())
             {
                 driver.Navigate().GoToUrl(url);
             }

@@ -9,15 +9,14 @@ Scenario: Go through the steps to fill the profile
 	When I enter my Email = 'mickdelaney@gmail.com' and Password = '$Password123'
 	Then my dashboard is opened and its title is 'Elevate'
 
-	When I manually enter signup steps url = 'http://localhost/Contractors/signup/steps?step=0'
-	Then profile's Choose password page is opened
-	And it says 'Password saved. You can change this later, once you've completed signing up.'
+	When I manually go to signup step 0
+	Then profile step0 page is opened with header 'Hello mick delaney'
 
 	When I press Continue
-	Then profile's Technical skills page is opened
+	Then profile step1 page is opened with header 'Technical skills'
 
 	When I enter skills:
 	| Skill   | Experience | LastUsedMonth | LastUsedYear |
 	| MongoDB | 0.5        | August        | 2012         |
 	And Press Save and Continue button
-	Then profile's Work experience page is opened
+	Then profile step2 page is opened with header 'Work experience'

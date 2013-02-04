@@ -80,6 +80,8 @@
       <DependentUpon>SignUpSteps.feature</DependentUpon>
     </Compile>
     <Compile Include="Pages\BasePageModel.cs" />
+    <Compile Include="Pages\ElevatePages\SignUpProfileStep2PageModel.cs" />
+    <Compile Include="Pages\ElevatePages\SignUpProfileStep1PageModel.cs" />
     <Compile Include="Pages\ElevatePages\DashboardPageModel.cs" />
     <Compile Include="Pages\ElevatePages\SignUpProfileStep0PageModel.cs" />
     <Compile Include="Pages\IPageModel.cs" />

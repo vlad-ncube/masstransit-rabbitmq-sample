@@ -10,6 +10,8 @@ namespace Test.Customers.Steps.ElevateSteps
     public class ElevateContractorSignUpStepsSteps : BaseSteps
     {
         ILoginPageModel loginPage;
+        ISignUpProfileStep0PageModel step0Page;
+        ISignUpProfileStep1PageModel step1Page;
 
         [Given(@"I have sign in page opened")]
         public void GivenIHaveSignInPageOpened()
@@ -32,53 +34,51 @@ namespace Test.Customers.Steps.ElevateSteps
             Assert.AreEqual(title, dashboardPage.Title);
         }
 
-        [When(@"I manually enter signup steps url = '(.*)'")]
-        public void WhenIManuallyEnterSignupStepsUrl(string p0)
+        [When(@"I manually go to signup step 0")]
+        public void WhenIManuallyEnterSignupStepsUrl()
         {
-            ScenarioContext.Current.Pending();
+            step0Page = Container.Resolve<ISignUpProfileStep0PageModel>();
         }
 
-        [Then(@"profile's Choose password page is opened")]
-        public void ThenProfileSChoosePasswordPageIsOpened()
+        [Then(@"profile step0 page is opened with header '(.*)'")]
+        public void ThenProfileChoosePasswordPageIsOpenedWithHeader(string pageHeader)
         {
-            ScenarioContext.Current.Pending();
+            Assert.AreEqual(pageHeader, step0Page.Header);
         }
-
-        [Then(@"it says '(.*)'ve completed signing up\.'")]
-        public void ThenItSaysVeCompletedSigningUp_(string p0)
-        {
-            ScenarioContext.Current.Pending();
-        }
-
+        
         [When(@"I press Continue")]
         public void WhenIPressContinue()
         {
-            ScenarioContext.Current.Pending();
+            step0Page.Continue();
         }
 
-        [Then(@"profile's Technical skills page is opened")]
-        public void ThenProfileSTechnicalSkillsPageIsOpened()
+        [Then(@"profile step1 page is opened with header '(.*)'")]
+        public void ThenProfileSTechnicalSkillsPageIsOpened(string pageHeader)
         {
-            ScenarioContext.Current.Pending();
+            step1Page = Container.Resolve<ISignUpProfileStep1PageModel>();
+            Assert.AreEqual(pageHeader, step1Page.Header);
         }
 
         [When(@"I enter skills:")]
         public void WhenIEnterSkills(Table table)
         {
-            ScenarioContext.Current.Pending();
+            step1Page.Skill = table.Rows[0]["Skill"];
+            step1Page.Experience = table.Rows[0]["Experience"];
+            step1Page.LastUsedMonth = table.Rows[0]["LastUsedMonth"];
+            step1Page.LastUsedYear = table.Rows[0]["LastUsedYear"];
         }
 
         [When(@"Press Save and Continue button")]
         public void WhenPressSaveAndContinueButton()
         {
-            ScenarioContext.Current.Pending();
+            step1Page.SaveAndContinue();
         }
 
-        [Then(@"profile's Work experience page is opened")]
-        public void ThenProfileSWorkExperiencePageIsOpened()
+        [Then(@"profile step2 page is opened with header '(.*)'")]
+        public void ThenProfileSWorkExperiencePageIsOpened(string pageHeader)
         {
-            ScenarioContext.Current.Pending();
+            ISignUpProfileStep2PageModel step2Page = Container.Resolve<ISignUpProfileStep2PageModel>();
+            Assert.AreEqual(pageHeader, step2Page.Header);
         }
-
     }
 }
