@@ -43,6 +43,7 @@ namespace Test.Customers.Steps
 
         static void RunServices()
         {
+            // TODO: vlad - think about running it in another way
             serviceProcess = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.ToLower() == "service")
                 ?? Process.Start(@"..\..\..\..\output\service\Service.exe");
         }

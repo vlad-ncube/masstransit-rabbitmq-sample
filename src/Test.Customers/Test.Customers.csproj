@@ -69,23 +69,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AddUser.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\ElevateFeatures\ElevateContractorSignUpSteps.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ElevateContractorSignUpSteps.feature</DependentUpon>
-    </Compile>
     <Compile Include="Features\SignUpSteps.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SignUpSteps.feature</DependentUpon>
     </Compile>
     <Compile Include="Pages\BasePageModel.cs" />
-    <Compile Include="Pages\ElevatePages\SignUpProfileStep2PageModel.cs" />
-    <Compile Include="Pages\ElevatePages\SignUpProfileStep1PageModel.cs" />
-    <Compile Include="Pages\ElevatePages\DashboardPageModel.cs" />
-    <Compile Include="Pages\ElevatePages\SignUpProfileStep0PageModel.cs" />
     <Compile Include="Pages\IPageModel.cs" />
-    <Compile Include="Pages\ElevatePages\LoginPageModel.cs" />
     <Compile Include="Pages\ISignUpStep1PageModel.cs" />
     <Compile Include="Pages\IUserPageModel.cs" />
     <Compile Include="Pages\SignUpStep1PageModel.cs" />
@@ -93,7 +83,6 @@
     <Compile Include="Steps\AddUserSteps.cs" />
     <Compile Include="Steps\BaseSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\ElevateSteps\ElevateContractorSignUpStepsSteps.cs" />
     <Compile Include="Steps\SignUpStepsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,10 +95,6 @@
     <None Include="Features\AddUser.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddUser.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\ElevateFeatures\ElevateContractorSignUpSteps.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ElevateContractorSignUpSteps.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\SignUpSteps.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
