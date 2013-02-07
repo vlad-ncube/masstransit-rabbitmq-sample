@@ -218,6 +218,7 @@
     <Content Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\SignUpSteps\Index.cshtml" />
+    <Content Include="Customers.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -259,6 +260,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\..\packages\OctoPack.2.0.14\targets\OctoPack.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
