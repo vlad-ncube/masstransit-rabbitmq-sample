@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Configuration;
 using OpenQA.Selenium;
 
 namespace Test.Customers.Pages
@@ -11,10 +11,11 @@ namespace Test.Customers.Pages
             get { return driver; }
         }
 
-        public BasePageModel(IWebDriver driver, string url)
+        public BasePageModel(IWebDriver driver, string path)
         {
             this.driver = driver;
 
+            string url = ConfigurationManager.AppSettings["MassTransitUrl"] + path;
             if (this.driver.Url.ToLower() != url.ToLower())
             {
                 driver.Navigate().GoToUrl(url);

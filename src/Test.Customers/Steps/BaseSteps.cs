@@ -14,7 +14,6 @@ namespace Test.Customers.Steps
     public class BaseSteps
     {
         static WindsorContainer container;
-        static Process serviceProcess;
 
         public static WindsorContainer Container
         {
@@ -25,7 +24,6 @@ namespace Test.Customers.Steps
         public static void TestsSetup()
         {
             ConfigureContainer();
-            RunServices();
         }
 
         static void ConfigureContainer()
@@ -41,18 +39,10 @@ namespace Test.Customers.Steps
             container.Register(Component.For<IRepository>().ImplementedBy<MongoRepository>()); // TODO: vlad - can we get it from a config?
         }
 
-        static void RunServices()
-        {
-            // TODO: vlad - think about running it in another way
-            serviceProcess = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.ToLower() == "service")
-                ?? Process.Start(@"..\..\..\..\output\service\Service.exe");
-        }
-
         [AfterTestRun]
         public static void TestsCleanup()
         {
             container.Resolve<IWebDriver>().Quit();
-            serviceProcess.Kill();
         }
     }
 }
