@@ -5,9 +5,6 @@ namespace Test.Customers.Pages
 {
     public class UserPageModel : BasePageModel, IUserPageModel
     {
-        // TODO: Vlad - think about where to take it from
-        const string path = "";
-
         public string FirstName
         {
             set { Driver.FindElement(By.Id("FirstName")).SendKeys(value); }
@@ -37,8 +34,6 @@ namespace Test.Customers.Pages
         {
             get { return Driver.FindElement(By.Id("ResultMessage")).Text; }
         }
-
-        public UserPageModel(IWebDriver driver) : base(driver, path) { }
 
         public void Submit()
         {

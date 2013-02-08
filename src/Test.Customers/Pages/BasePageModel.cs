@@ -1,9 +1,10 @@
 ﻿using System.Configuration;
 using OpenQA.Selenium;
+using Test.Customers.Steps;
 
 namespace Test.Customers.Pages
 {
-    public class BasePageModel
+    public abstract class BasePageModel
     {
         readonly IWebDriver driver;
         public IWebDriver Driver
@@ -11,15 +12,23 @@ namespace Test.Customers.Pages
             get { return driver; }
         }
 
-        public BasePageModel(IWebDriver driver, string path)
+        protected virtual string Path
+        {
+            get { return ""; }
+        }
+
+        public BasePageModel(IWebDriver driver)
         {
             this.driver = driver;
 
-            string url = ConfigurationManager.AppSettings["MassTransitUrl"] + path;
+            string url = ConfigurationManager.AppSettings["MassTransitUrl"] + Path;
             if (this.driver.Url.ToLower() != url.ToLower())
             {
                 driver.Navigate().GoToUrl(url);
             }
         }
+
+        // TODO: vlad - remove dependency from BaseSteps - create a kind of Context
+        public BasePageModel():this (BaseSteps.Container.Resolve<IWebDriver>()){}
     }
 }
