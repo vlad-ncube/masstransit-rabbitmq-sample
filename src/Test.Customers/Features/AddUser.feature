@@ -1,5 +1,6 @@
 ﻿Feature: AddUser
 
+@cleanDB
 Scenario: Add new user
 	Given I opened Add New User Page
 	When I entered new user data

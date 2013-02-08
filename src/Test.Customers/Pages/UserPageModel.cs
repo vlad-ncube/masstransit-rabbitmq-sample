@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using Test.Customers.Pages.Interfaces;
 
 namespace Test.Customers.Pages
 {

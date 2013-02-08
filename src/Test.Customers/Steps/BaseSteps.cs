@@ -1,12 +1,10 @@
-﻿using System.Diagnostics;
-using System.Linq;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.PhantomJS;
 using Repositories;
 using TechTalk.SpecFlow;
 using Castle.Windsor;
-using Test.Customers.Pages;
+using Test.Customers.Pages.Interfaces;
 
 namespace Test.Customers.Steps
 {
@@ -43,6 +41,14 @@ namespace Test.Customers.Steps
         public static void TestsCleanup()
         {
             container.Resolve<IWebDriver>().Quit();
+        }
+
+        [BeforeScenario("@cleanDB")]
+        public static void CleanDb()
+        {
+            // TODO: vlad - refactor repository
+            IRepository repository = Container.Resolve<IRepository>();
+            repository.DeleteUsers();
         }
     }
 }

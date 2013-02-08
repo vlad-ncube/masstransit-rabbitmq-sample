@@ -76,9 +76,9 @@
       <DependentUpon>SignUpSteps.feature</DependentUpon>
     </Compile>
     <Compile Include="Pages\BasePageModel.cs" />
-    <Compile Include="Pages\IPageModel.cs" />
-    <Compile Include="Pages\ISignUpStep1PageModel.cs" />
-    <Compile Include="Pages\IUserPageModel.cs" />
+    <Compile Include="Pages\Interfaces\IPageModel.cs" />
+    <Compile Include="Pages\Interfaces\ISignUpStep1PageModel.cs" />
+    <Compile Include="Pages\Interfaces\IUserPageModel.cs" />
     <Compile Include="Pages\SignUpStep1PageModel.cs" />
     <Compile Include="Pages\UserPageModel.cs" />
     <Compile Include="Steps\AddUserSteps.cs" />

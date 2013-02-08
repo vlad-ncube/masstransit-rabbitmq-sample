@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Configuration;
 using Domain.DomainObjects;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
@@ -11,9 +11,8 @@ namespace Repositories
 
         static MongoRepository()
         {
-            // TODO: vlad - get it from cfg
-            string connectionString = "mongodb://localhost";
-            string databaseName = "MasstransitSpike";
+            string connectionString = ConfigurationManager.AppSettings["MongoDbConnectionString"];
+            string databaseName = ConfigurationManager.AppSettings["MongoDbDatabaseName"];
 
             BsonClassMap.RegisterClassMap<User>(cm =>
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 using Test.Customers.Pages;
+using Test.Customers.Pages.Interfaces;
 
 namespace Test.Customers.Steps
 {

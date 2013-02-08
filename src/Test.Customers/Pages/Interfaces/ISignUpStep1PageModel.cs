@@ -1,4 +1,4 @@
-﻿namespace Test.Customers.Pages
+﻿namespace Test.Customers.Pages.Interfaces
 {
     interface ISignUpStep1PageModel : IPageModel
     {

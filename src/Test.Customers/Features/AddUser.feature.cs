@@ -71,12 +71,14 @@ namespace Test.Customers.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add new user")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddUser")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("cleanDB")]
         public virtual void AddNewUser()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add new user", ((string[])(null)));
-#line 3
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add new user", new string[] {
+                        "cleanDB"});
 #line 4
+this.ScenarioSetup(scenarioInfo);
+#line 5
  testRunner.Given("I opened Add New User Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -91,13 +93,13 @@ this.ScenarioSetup(scenarioInfo);
                         "Test Email Address",
                         "99",
                         "Test Location"});
-#line 5
+#line 6
  testRunner.When("I entered new user data", ((string)(null)), table1, "When ");
-#line 8
- testRunner.And("submited the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.Then("the result says the user \"Test First Name\" has been added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("submited the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
+ testRunner.Then("the result says the user \"Test First Name\" has been added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 11
  testRunner.And("new record about the user has been added to db with UserFirstName = \"Test First N" +
                     "ame\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden

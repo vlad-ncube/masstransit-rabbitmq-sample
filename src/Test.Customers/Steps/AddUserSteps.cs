@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Repositories;
 using TechTalk.SpecFlow;
 using Test.Customers.Pages;
+using Test.Customers.Pages.Interfaces;
 
 namespace Test.Customers.Steps
 {
