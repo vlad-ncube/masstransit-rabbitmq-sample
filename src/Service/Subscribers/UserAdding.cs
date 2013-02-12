@@ -11,11 +11,11 @@ namespace Service.Subscribers
 	{
 		public void Consume(IConsumeContext<AddUser> context)
 		{
-            IRepository repository = Program.Container.Resolve<IRepository>();
+            IUserRepository repository = Program.Container.Resolve<IUserRepository>();
 
-            repository.AddUser(new User
+            repository.Add(new User
             {
-                UserId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 FirstName = context.Message.FirstName,
                 LastName = context.Message.LastName,
                 EmailAddress = context.Message.EmailAddress,

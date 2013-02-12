@@ -1,7 +1,9 @@
 ﻿using Castle.MicroKernel.Registration;
+using Domain.DomainObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.PhantomJS;
 using Repositories;
+using Repositories.MongoRepository;
 using TechTalk.SpecFlow;
 using Castle.Windsor;
 using Test.Customers.Pages.Interfaces;
@@ -34,7 +36,7 @@ namespace Test.Customers.Steps
             IWebDriver driver = new PhantomJSDriver();
             container.Register(Component.For<IWebDriver>().Instance(driver));
 
-            container.Register(Component.For<IRepository>().ImplementedBy<MongoRepository>()); // TODO: vlad - can we get it from a config?
+            container.Register(AllTypes.FromThisAssembly().BasedOn<BaseMongoRepository<IEntity>>()); // TODO: vlad - can we get it from a config?
         }
 
         [AfterTestRun]
@@ -46,9 +48,11 @@ namespace Test.Customers.Steps
         [BeforeScenario("@cleanDB")]
         public static void CleanDb()
         {
-            // TODO: vlad - refactor repository
-            IRepository repository = Container.Resolve<IRepository>();
-            repository.DeleteUsers();
+            var repositories = Container.ResolveAll<IRepository<IEntity>>();
+            foreach (var repository in repositories)
+            {
+                repository.DeleteAll();
+            }
         }
     }
 }

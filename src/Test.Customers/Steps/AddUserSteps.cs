@@ -45,8 +45,8 @@ namespace Test.Customers.Steps
         public void ThenNewRecordAboutTheUserHasBeenAddedToDbWithUserFirstName(string userFirstName)
         {
             System.Threading.Thread.Sleep(5000); // TODO: vlad - can we make it in a better way?
-            IRepository repository = Container.Resolve<IRepository>();
-            User dbUser = repository.GetUserByName(userFirstName);
+            var userRepository = Container.Resolve<IUserRepository>();
+            User dbUser = userRepository.GetByName(userFirstName);
             Assert.AreEqual(99, dbUser.Age);
         }
     }

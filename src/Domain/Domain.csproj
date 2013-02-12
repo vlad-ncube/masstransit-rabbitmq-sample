@@ -68,6 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainObjects\BaseEntity.cs" />
+    <Compile Include="DomainObjects\IEntity.cs" />
     <Compile Include="DomainObjects\User.cs" />
     <Compile Include="Messages\AddUser.cs" />
     <Compile Include="Messages\AuthorizeCustomer.cs" />

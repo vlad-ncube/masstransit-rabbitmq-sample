@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IRepository.cs" />
-    <Compile Include="MongoRepository.cs" />
+    <Compile Include="MongoRepository\BaseMongoRepository.cs" />
+    <Compile Include="IUserRepository.cs" />
+    <Compile Include="MongoRepository\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
