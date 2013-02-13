@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace Repositories.MongoRepository
 {
-    class UserRepository : BaseMongoRepository<User>, IUserRepository
+    public class UserRepository : BaseMongoRepository<User>, IUserRepository
     {
         public User GetByName(string firstName)
         {

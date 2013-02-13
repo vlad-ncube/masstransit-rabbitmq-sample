@@ -7,6 +7,7 @@ using Repositories.MongoRepository;
 using TechTalk.SpecFlow;
 using Castle.Windsor;
 using Test.Customers.Pages.Interfaces;
+using System;
 
 namespace Test.Customers.Steps
 {
@@ -30,13 +31,15 @@ namespace Test.Customers.Steps
         {
             container = new WindsorContainer();
 
-            container.Register(AllTypes.FromThisAssembly().BasedOn<IPageModel>().WithService.FirstInterface());
+            container.Register(AllTypes.FromThisAssembly().BasedOn<IPageModel>().WithServiceFirstInterface());
 
             // TODO: vlad - refactor the way phantom being run
             IWebDriver driver = new PhantomJSDriver();
             container.Register(Component.For<IWebDriver>().Instance(driver));
 
-            container.Register(AllTypes.FromThisAssembly().BasedOn<BaseMongoRepository<IEntity>>()); // TODO: vlad - can we get it from a config?
+            // TODO: vlad - can we get it from a config?
+            Type repositoryBaseType = typeof(BaseMongoRepository<>);
+            container.Register(AllTypes.FromAssemblyContaining(repositoryBaseType).BasedOn(repositoryBaseType).WithServiceDefaultInterfaces());
         }
 
         [AfterTestRun]
@@ -48,11 +51,7 @@ namespace Test.Customers.Steps
         [BeforeScenario("@cleanDB")]
         public static void CleanDb()
         {
-            var repositories = Container.ResolveAll<IRepository<IEntity>>();
-            foreach (var repository in repositories)
-            {
-                repository.DeleteAll();
-            }
+            container.Resolve<IUserRepository>().DeleteAll();
         }
     }
 }

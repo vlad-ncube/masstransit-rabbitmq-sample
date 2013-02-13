@@ -21,8 +21,11 @@ namespace Service
             Container.Register(
                 AllTypes.FromThisAssembly().BasedOn<IConsumer>(),
                 Component.For(typeof (ISagaRepository<>)).ImplementedBy(typeof (InMemorySagaRepository<>)),
-                AllTypes.FromThisAssembly().BasedOn<ISaga>(),
-                AllTypes.FromThisAssembly().BasedOn<BaseMongoRepository<IEntity>>()); // TODO: vlad - can we get it from a config?
+                AllTypes.FromThisAssembly().BasedOn<ISaga>());
+
+            // TODO: vlad - can we get it from a config?
+            System.Type repositoryBaseType = typeof(BaseMongoRepository<>);
+            Container.Register(AllTypes.FromAssemblyContaining(repositoryBaseType).BasedOn(repositoryBaseType).WithServiceDefaultInterfaces());
 
             Bus.Initialize(sbc =>
             {

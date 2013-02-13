@@ -16,7 +16,7 @@ namespace Repositories.MongoRepository
 
         protected virtual string TableName
         {
-            get { return typeof (TEntity).ToString(); }
+            get { return typeof(TEntity).Name; }
         }
 
         static BaseMongoRepository()
@@ -25,11 +25,8 @@ namespace Repositories.MongoRepository
             string databaseName = ConfigurationManager.AppSettings["MongoDbDatabaseName"];
 
             database = new MongoClient(connectionString).GetServer().GetDatabase(databaseName);
-        }
 
-        public BaseMongoRepository()
-        {
-            BsonClassMap.RegisterClassMap<TEntity>(cm =>
+            BsonClassMap.RegisterClassMap<BaseEntity>(cm =>
             {
                 cm.AutoMap();
                 cm.GetMemberMap(u => u.Id).SetElementName("_id");
