@@ -92,7 +92,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Features\AddUser.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddUser.feature.cs</LastGenOutput>
@@ -104,13 +106,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MasstransitSpike.Core\MasstransitSpike.Core.csproj">
+      <Project>{ecde2c6c-4510-439b-b948-f6de5b52a486}</Project>
+      <Name>MasstransitSpike.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{c188a45b-368e-43db-a971-7db00e73a539}</Project>
       <Name>Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repositories\Repositories.csproj">
-      <Project>{8eff6abe-8a21-4f1f-ba94-5956030cb633}</Project>
-      <Name>Repositories</Name>
+    <ProjectReference Include="..\Repositories.Mongo\Repositories.Mongo.csproj">
+      <Project>{09bc83be-7c36-4e69-a9fa-3c4f01402739}</Project>
+      <Name>Repositories.Mongo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositories.MySqlFake\Repositories.MySqlFake.csproj">
+      <Project>{227db930-cb32-4967-9812-bc8f8378c102}</Project>
+      <Name>Repositories.MySqlFake</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

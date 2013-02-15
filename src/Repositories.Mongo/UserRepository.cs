@@ -1,9 +1,10 @@
 ﻿using Domain.DomainObjects;
 using MongoDB.Driver;
+using MasstransitSpike.Core.Repositories;
 
-namespace Repositories.MongoRepository
+namespace Repositories.Mongo
 {
-    public class UserRepository : BaseMongoRepository<User>, IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public User GetByName(string firstName)
         {

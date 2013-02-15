@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Repositories")]
+[assembly: AssemblyTitle("Repositories.Mongo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hewlett-Packard")]
-[assembly: AssemblyProduct("Repositories")]
+[assembly: AssemblyProduct("Repositories.Mongo")]
 [assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0a6561da-57f1-4574-bfa7-483821f110e8")]
+[assembly: Guid("e7a35666-2de9-43d9-86ab-767bcb2be4ad")]
 
 // Version information for an assembly consists of the following four values:
 //

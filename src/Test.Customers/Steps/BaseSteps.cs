@@ -2,10 +2,10 @@
 using Domain.DomainObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.PhantomJS;
-using Repositories;
-using Repositories.MongoRepository;
+using MasstransitSpike.Core.Repositories;
 using TechTalk.SpecFlow;
 using Castle.Windsor;
+using Castle.Windsor.Installer;
 using Test.Customers.Pages.Interfaces;
 using System;
 
@@ -37,9 +37,7 @@ namespace Test.Customers.Steps
             IWebDriver driver = new PhantomJSDriver();
             container.Register(Component.For<IWebDriver>().Instance(driver));
 
-            // TODO: vlad - can we get it from a config?
-            Type repositoryBaseType = typeof(BaseMongoRepository<>);
-            container.Register(AllTypes.FromAssemblyContaining(repositoryBaseType).BasedOn(repositoryBaseType).WithServiceDefaultInterfaces());
+            container.Install(Configuration.FromAppConfig());
         }
 
         [AfterTestRun]

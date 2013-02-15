@@ -2,10 +2,11 @@
 using Domain.DomainObjects;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using MasstransitSpike.Core.Repositories;
 
-namespace Repositories.MongoRepository
+namespace Repositories.Mongo
 {
-    public abstract class BaseMongoRepository<TEntity> : IRepository<TEntity> where TEntity : IEntity
+    public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : IEntity
     {
         private static MongoDatabase database;
 
@@ -19,7 +20,7 @@ namespace Repositories.MongoRepository
             get { return typeof(TEntity).Name; }
         }
 
-        static BaseMongoRepository()
+        static BaseRepository()
         {
             string connectionString = ConfigurationManager.AppSettings["MongoDbConnectionString"];
             string databaseName = ConfigurationManager.AppSettings["MongoDbDatabaseName"];

@@ -1,10 +1,11 @@
 ﻿using System;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Castle.Windsor.Installer;
 using Domain.DomainObjects;
 using MassTransit;
 using MassTransit.Saga;
-using Repositories.MongoRepository;
+using MasstransitSpike.Core.Repositories;
 using Topshelf;
 
 namespace Service
@@ -23,9 +24,7 @@ namespace Service
                 Component.For(typeof (ISagaRepository<>)).ImplementedBy(typeof (InMemorySagaRepository<>)),
                 AllTypes.FromThisAssembly().BasedOn<ISaga>());
 
-            // TODO: vlad - can we get it from a config?
-            System.Type repositoryBaseType = typeof(BaseMongoRepository<>);
-            Container.Register(AllTypes.FromAssemblyContaining(repositoryBaseType).BasedOn(repositoryBaseType).WithServiceDefaultInterfaces());
+            Container.Install(Configuration.FromAppConfig());
 
             Bus.Initialize(sbc =>
             {

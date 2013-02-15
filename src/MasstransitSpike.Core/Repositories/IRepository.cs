@@ -1,6 +1,6 @@
 ﻿using Domain.DomainObjects;
 
-namespace Repositories
+namespace MasstransitSpike.Core.Repositories
 {
     public interface IRepository<TEntity> where TEntity : IEntity
     {

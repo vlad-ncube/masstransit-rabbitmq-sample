@@ -3,7 +3,7 @@ using Castle.Windsor;
 using Domain.DomainObjects;
 using Domain.Messages;
 using MassTransit;
-using Repositories;
+using MasstransitSpike.Core.Repositories;
 
 namespace Service.Subscribers
 {

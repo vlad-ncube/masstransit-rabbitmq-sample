@@ -1,6 +1,6 @@
 ﻿using Domain.DomainObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Repositories;
+using MasstransitSpike.Core.Repositories;
 using TechTalk.SpecFlow;
 using Test.Customers.Pages;
 using Test.Customers.Pages.Interfaces;
