@@ -32,6 +32,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories.MySqlFake", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories.Mongo", "src\Repositories.Mongo\Repositories.Mongo.csproj", "{09BC83BE-7C36-4E69-A9FA-3C4F01402739}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SlowCheetah", "SlowCheetah", "{7B79D712-D9F4-44ED-B28E-7AB014F142A1}"
+	ProjectSection(SolutionItems) = preProject
+		SlowCheetah\SlowCheetah.Tasks.dll = SlowCheetah\SlowCheetah.Tasks.dll
+		SlowCheetah\SlowCheetah.Transforms.targets = SlowCheetah\SlowCheetah.Transforms.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = MasstransitSpike.vsmdi

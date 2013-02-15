@@ -44,7 +44,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SlowCheetahTargets Condition=" '$(SlowCheetahTargets)'=='' ">$(LOCALAPPDATA)\Microsoft\MSBuild\SlowCheetah\v1\SlowCheetah.Transforms.targets</SlowCheetahTargets>
+    <SlowCheetahTargets Condition=" '$(SlowCheetahTargets)'=='' ">..\..\SlowCheetah\SlowCheetah.Transforms.targets</SlowCheetahTargets>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
