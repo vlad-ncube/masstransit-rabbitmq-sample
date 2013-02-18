@@ -2,6 +2,7 @@
 <TestSettings name="TestSettings1" id="b91508f1-909c-4122-8f3b-b72b593b1fb5" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Description>These are default test settings for a local test run.</Description>
   <Deployment enabled="false" />
+  <Scripts setupScript=".\src\Test.Customers\TestScripts\BeforeTests.bat" cleanupScript=".\src\Test.Customers\TestScripts\AfterTests.bat" />
   <Execution>
     <TestTypeSpecific>
       <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">

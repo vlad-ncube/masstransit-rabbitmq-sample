@@ -1,0 +1,1 @@
+start ..\..\..\output\service\Service.exe

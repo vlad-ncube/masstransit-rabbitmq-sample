@@ -18,7 +18,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C9567B0E-7A99-4AE2-B9BE-23BA0661BE44}"
 	ProjectSection(SolutionItems) = preProject
 		MasstransitSpike.vsmdi = MasstransitSpike.vsmdi
-		TestSettings1.testsettings = TestSettings1.testsettings
+		TestSettingsLocal.testsettings = TestSettingsLocal.testsettings
+		TestSettingsStaging.testsettings = TestSettingsStaging.testsettings
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8A6D03BA-82A1-430B-BFE5-A95B46F1663B}"

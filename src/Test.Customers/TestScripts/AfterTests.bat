@@ -1,0 +1,1 @@
+taskkill /IM Service.exe /f

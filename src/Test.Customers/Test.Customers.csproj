@@ -102,6 +102,8 @@
     <Content Include="phantomjs.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="TestScripts\BeforeTests.bat" />
+    <None Include="TestScripts\AfterTests.bat" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
