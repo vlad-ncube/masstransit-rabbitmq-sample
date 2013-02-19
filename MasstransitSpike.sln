@@ -23,9 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8A6D03BA-82A1-430B-BFE5-A95B46F1663B}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasstransitSpike.Core", "src\MasstransitSpike.Core\MasstransitSpike.Core.csproj", "{ECDE2C6C-4510-439B-B948-F6DE5B52A486}"
 EndProject
